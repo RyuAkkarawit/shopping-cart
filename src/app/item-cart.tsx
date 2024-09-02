@@ -1,7 +1,7 @@
 "use client";
+
 import {
   IconButton,
-  Button,
   Stack,
   Typography,
   Grid2 as Grid,
@@ -12,24 +12,28 @@ import React from "react";
 
 export default function ItemCart({
   itemname,
-  handleIncremantal,
+  itemPrice,
+  onPriceUpdate,
 }: {
   itemname: string;
-  handleIncremantal: () => void;
+  itemPrice: number;
+  onPriceUpdate: (priceChange: number) => void;
 }) {
-  const itemPrice = 100;
   const [count, setCount] = React.useState(0);
-  const [totalPrice, setTotalPrice] = React.useState(0);
 
   const handleAddItemClick = () => {
     const newCount = count + 1;
     setCount(newCount);
-    setTotalPrice(newCount * itemPrice);
-    handleIncremantal();
+    onPriceUpdate(itemPrice); // Update the total price in the parent component
   };
 
-  
-  
+  const handleRemoveItemClick = () => {
+    if (count > 0) {
+      const newCount = count - 1;
+      setCount(newCount);
+      onPriceUpdate(-itemPrice); // Update the total price in the parent component
+    }
+  };
 
   return (
     <Grid container spacing={1}>
@@ -38,14 +42,14 @@ export default function ItemCart({
       </Grid>
       <Grid size={{ xs: 6, md: 4 }}>
         <Stack direction="row" spacing={2}>
-          <IconButton>
+          <IconButton onClick={handleRemoveItemClick}>
             <RemoveIcon />
           </IconButton>
           <Typography variant="h6">{count}</Typography>
           <IconButton onClick={handleAddItemClick}>
             <AddIcon />
           </IconButton>
-          <Typography variant="h6">{totalPrice} Thb</Typography>
+          <Typography variant="h6">{count * itemPrice} Thb</Typography>
         </Stack>
       </Grid>
     </Grid>
