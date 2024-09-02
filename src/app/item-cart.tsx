@@ -1,21 +1,20 @@
+/** @format */
+
 "use client";
 
-import {
-  IconButton,
-  Stack,
-  Typography,
-  Grid2 as Grid,
-} from "@mui/material";
+import { IconButton, Stack, Typography, Grid2 as Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import React from "react";
 
 export default function ItemCart({
   itemname,
+  itemimage,
   itemPrice,
   onPriceUpdate,
 }: {
   itemname: string;
+  itemimage: string;
   itemPrice: number;
   onPriceUpdate: (priceChange: number) => void;
 }) {
@@ -38,7 +37,10 @@ export default function ItemCart({
   return (
     <Grid container spacing={1}>
       <Grid size={{ xs: 6, md: 8 }}>
-        <Typography variant="h6">{itemname}</Typography>
+        <div>
+          <img src={itemimage} alt="image" style={{width: '96px', height: '96px'}} />
+          <Typography variant="h6">{itemname}</Typography>
+        </div>
       </Grid>
       <Grid size={{ xs: 6, md: 4 }}>
         <Stack direction="row" spacing={2}>
@@ -49,7 +51,7 @@ export default function ItemCart({
           <IconButton onClick={handleAddItemClick}>
             <AddIcon />
           </IconButton>
-          <Typography variant="h6">{count * itemPrice} Thb</Typography>
+          <Typography variant="h6">{new Intl.NumberFormat('en-US').format(count * itemPrice)} Thb</Typography>
         </Stack>
       </Grid>
     </Grid>
