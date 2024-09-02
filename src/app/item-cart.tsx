@@ -2,7 +2,7 @@
 
 "use client";
 
-import { IconButton, Stack, Typography, Grid2 as Grid } from "@mui/material";
+import { IconButton, Stack, Typography, Grid2 } from "@mui/material";
 import React from "react";
 
 export default function ItemCart({
@@ -33,14 +33,14 @@ export default function ItemCart({
   };
 
   return (
-    <Grid container spacing={1}>
-      <Grid size={{ xs: 6, md: 8 }}>
+    <Grid2 container spacing={1}>
+      <Grid2 size={{ xs: 6, md: 8 }}>
         <div>
           <img src={itemimage} alt="image" style={{width: '96px', height: '96px'}} />
           <Typography variant="h6">{itemname}</Typography>
         </div>
-      </Grid>
-      <Grid size={{ xs: 6, md: 4 }}>
+      </Grid2>
+      <Grid2 size={{ xs: 6, md: 4 }}>
         <Stack direction="row" spacing={2}>
           <IconButton onClick={handleRemoveItemClick}>
             -
@@ -51,7 +51,7 @@ export default function ItemCart({
           </IconButton>
           <Typography variant="h6">{new Intl.NumberFormat('en-US').format(count * itemPrice)} Thb</Typography>
         </Stack>
-      </Grid>
-    </Grid>
+      </Grid2>
+    </Grid2>
   );
 }
