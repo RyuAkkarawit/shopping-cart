@@ -3,7 +3,6 @@
 "use client";
 
 import { IconButton, Stack, Typography, Grid2 as Grid } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import React from "react";
 
 export default function ItemCart({
