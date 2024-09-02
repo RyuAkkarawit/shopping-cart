@@ -4,7 +4,6 @@
 
 import { IconButton, Stack, Typography, Grid2 as Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import React from "react";
 
 export default function ItemCart({
@@ -45,11 +44,11 @@ export default function ItemCart({
       <Grid size={{ xs: 6, md: 4 }}>
         <Stack direction="row" spacing={2}>
           <IconButton onClick={handleRemoveItemClick}>
-            <RemoveIcon />
+            -
           </IconButton>
           <Typography variant="h6">{count}</Typography>
           <IconButton onClick={handleAddItemClick}>
-            <AddIcon />
+            +
           </IconButton>
           <Typography variant="h6">{new Intl.NumberFormat('en-US').format(count * itemPrice)} Thb</Typography>
         </Stack>
